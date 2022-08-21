@@ -1,0 +1,9 @@
+{{ $seriesname := index .Params.Series 0 | urlize}}
+{{ $series := index .Site.Taxonomies.series $seriesname }}
+
+{{ if in $series.Pages .Next }}
+<p>Previous: <a href="{{ .Next.RelPermalink }}">{{.Next.Title}}</a><span class="meta">{{ if .Next.Draft }} <span class="draft-label">DRAFT</span> {{ end }}</span></p>
+{{ end }}
+{{ if in $series.Pages .Prev }}
+<p>Next: <a href="{{ .Prev.RelPermalink }}">{{.Prev.Title}}</a><span class="meta">{{ if .Prev.Draft }} <span class="draft-label">DRAFT</span> {{ end }}</span></p>
+{{ end }}

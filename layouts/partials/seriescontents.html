@@ -1,7 +1,4 @@
 <div class="section">
-    <div class="post-header">
-        <h3 class="title">Others articles from this series</h3>
-    </div>
     {{ $seriesname := index .Params.Series 0 | urlize }}
     {{ $pages := index .Site.Taxonomies.series $seriesname }}
     <div class="posts">
