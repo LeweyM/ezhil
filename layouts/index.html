@@ -7,13 +7,28 @@
 
 		{{ with .Content }}{{ . }}{{ end }}
 
+		<div class="section">
+			<h2 class="section-header">
+				Series
+			</h2>
+			{{ range $a, $b := .Site.Taxonomies.series }}
+			<div class="post">
+				<a class="title" href="series/{{ $a | urlize }}">{{ $a | humanize }}</a>
+<!--				<span class="description"></span> -->
+			</div>
+
+			{{ end }}
+		</div>
+
+		<br>
+
 		<div class="recent-posts section">
 			<h2 class="section-header">
-				Recent posts
+				Posts
 			</h2>
 			<div class="posts">
 				{{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
-				{{ $paginator := .Paginate (where $pages "Params.hidden" "ne" true) }}
+				{{ $paginator := .Paginate (where (where $pages "Params.Series" "!=" "nil") "Params.hidden" "ne" true ) }}
 				{{ range $paginator.Pages }}
 				<div class="post">
 					<div class="meta">{{ if .Date }}{{ dateFormat "Jan 2, 2006" .Date }}{{ end }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</div>
