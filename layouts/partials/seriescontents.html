@@ -1,0 +1,20 @@
+<div class="section">
+    <div class="post-header">
+        <h3 class="title">Others articles from this series</h3>
+    </div>
+    {{ $seriesname := index .Params.Series 0 | urlize }}
+    {{ $pages := index .Site.Taxonomies.series $seriesname }}
+    <div class="posts">
+        {{ $currpage := .Page }}
+        {{ range $p := $pages.Pages }}
+        <div class="post">
+            {{ if eq $currpage $p }}
+            <span>{{$p.Title}}</span>
+            {{ else }}
+            <a href="{{ .RelPermalink }}">{{$p.Title}}</a> <span class="meta">{{ if $p.Draft }} <span
+                class="draft-label">DRAFT</span> {{ end }}</span>
+            {{ end }}
+        </div>
+        {{ end }}
+    </div>
+</div>
