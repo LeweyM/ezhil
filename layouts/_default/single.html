@@ -19,6 +19,10 @@
 			<div class="meta">{{ if .Date }}Posted at &mdash; {{ dateFormat "Jan 2, 2006" .Date }}{{ end }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</div>
 		</div>
 
+		<aside>
+			{{ .TableOfContents }}
+		</aside>
+
 		<div class="markdown">
 			{{ .Content }}
 		</div>
