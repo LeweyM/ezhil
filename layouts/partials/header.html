@@ -51,4 +51,9 @@
 	{{- end }}
 	{{- end }}
 	{{- end }}
+
+	<!-- Google Analytics -->
+	{{ if and (hugo.IsProduction) (.Site.Params.googleAnalytics) }}
+	{{ partial "analytics-gtag.html" . }}
+	{{ end }}
 </head>
