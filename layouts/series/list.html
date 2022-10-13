@@ -5,7 +5,11 @@
 <body>
 	<div class="container wrapper list">
 		{{ partial "head.html" . }}
-		<h1>{{ .Params.Title | humanize }}</h1>
+		<h1>{{ .Params.Title | humanize | title }}</h1>
+
+		{{ $descPage := index (index .Site.Taxonomies.seriesdesc "making-regex-from-scratch-in-go").Pages 0 }}
+		<img class="mx-auto w-50 d-block p-3" src="{{ $descPage.Params.image }}"/>
+		{{ $descPage.Content }}
 
 		{{ with .Content }}{{ . }}{{ end }}
 
