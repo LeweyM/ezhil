@@ -1,6 +1,6 @@
 {{ $_hugo_config := `{ "version": 1 }` }}
 {{ if .IsNamedParams }}
-<iframe src="/{{.Get "src" }}.html" alt="" class="w-100" style="height: 80vh"></iframe>
+<iframe src="{{.Get "src" }}" alt="" class="w-100" style="height: 80vh"></iframe>
 {{ else }}
 <iframe src="{{.Get 0}}" alt="" class="w-100" style="height: 80vh"></iframe>
 {{ end }}
