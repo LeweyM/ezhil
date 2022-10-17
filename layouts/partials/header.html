@@ -53,6 +53,13 @@
 	{{- end }}
 	{{- end }}
 
+	<script type="application/javascript">
+		function resizeIFrameToFitContent( iFrame ) {
+			iFrame.width  = iFrame.contentWindow.document.body.scrollWidth;
+			iFrame.height = iFrame.contentWindow.document.body.scrollHeight;
+		}
+	</script>
+
 	<!-- Google Analytics -->
 	{{ if and (hugo.IsProduction) (.Site.Params.googleAnalytics) }}
 	{{ partial "analytics-gtag.html" . }}
